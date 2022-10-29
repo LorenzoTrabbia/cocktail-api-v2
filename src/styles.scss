@@ -27,9 +27,13 @@ footer {
   display: flex;
   background-color: #1a1919;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 footer #btmFooter p {
+  margin: 0;
+}
+
+footer #absFooter p {
   margin: 0;
 }

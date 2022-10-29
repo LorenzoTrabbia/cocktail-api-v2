@@ -10,6 +10,8 @@ export class ControllerService {
   selectedRandomDrink: any;
   ascendent: boolean = true;
   isDisabled: string = '';
+  drinkSearched: string = '';
+  ingredientSelected: string = '';
   language: string = 'EN';
 
   setSelectedLetter(letter: string) {
@@ -26,6 +28,14 @@ export class ControllerService {
 
   setIsDisabled(isDisabled: string) {
     this.isDisabled = isDisabled;
+  }
+
+  setDrinkSearched(drinkSearched: string) {
+    this.drinkSearched = drinkSearched;
+  }
+
+  setIngredientSelected(ingredientSelected: string) {
+    this.ingredientSelected = ingredientSelected;
   }
 
   setLanguage(language: string) {

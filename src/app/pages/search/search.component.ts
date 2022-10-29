@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_service/api.service';
 import { ControllerService } from 'src/app/_service/controller.service';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     public controllerService: ControllerService
@@ -18,6 +18,8 @@ export class SearchComponent {
   drinks: any[] = [];
   drink: string = '';
   ingredient: string = '';
+  footerType: string = 'absFooter';
+  showInstructions: boolean = true;
 
   ingredients: string[] = [
     'Light rum',
@@ -121,13 +123,29 @@ export class SearchComponent {
     'Creme de Cassis',
   ];
 
+  ngOnInit() {
+    if (this.controllerService.drinkSearched) {
+      this.drink = this.controllerService.drinkSearched;
+      this.searchCocktail();
+    }
+    if (this.controllerService.ingredientSelected) {
+      this.ingredient = this.controllerService.ingredientSelected;
+      this.searchCocktailByIngredient(this.ingredient);
+    }
+  }
+
   searchCocktail() {
+    this.showInstructions = false;
+    this.footerType = '';
+    console.log(this.footerType);
     this.apiService.searchCocktailByName(this.drink).subscribe((data: any) => {
       this.drinks = data.drinks;
     });
   }
 
   searchCocktailByIngredient(ingredient: string) {
+    this.showInstructions = false;
+    this.footerType = '';
     this.apiService
       .searchCocktailByIngredient(ingredient)
       .subscribe((data: any) => {
@@ -146,8 +164,6 @@ export class SearchComponent {
   }
 
   clickSelect() {
-    console.log(this.ingredient);
-
     if (this.controllerService.isDisabled !== 'select') {
       if (this.ingredient.length === 0) {
         this.controllerService.setIsDisabled('');
@@ -155,5 +171,16 @@ export class SearchComponent {
         this.controllerService.setIsDisabled('input');
       }
     }
+  }
+
+  resetFilters() {
+    this.showInstructions = true;
+    this.footerType = 'absFooter';
+    this.drink = '';
+    this.ingredient = '';
+    this.drinks = [];
+    this.controllerService.setIsDisabled('');
+    this.controllerService.setDrinkSearched('');
+    this.controllerService.setIngredientSelected('');
   }
 }

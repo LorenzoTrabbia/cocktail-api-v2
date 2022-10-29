@@ -28,15 +28,33 @@
   <mat-form-field appearance="outline" color="accent">
     <mat-label>Search by ingredient</mat-label>
     <mat-select
-      (valueChange)="clickSelect()"
+      (selectionChange)="clickSelect()"
       [(ngModel)]="ingredient"
       [disabled]="controllerService.isDisabled === 'select'"
     >
-      <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">
+      <mat-option
+        *ngFor="let ingredient of ingredients"
+        [value]="ingredient"
+        (click)="searchCocktailByIngredient(ingredient)"
+      >
         {{ ingredient }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <button
+    mat-raised-button
+    class="sort-button"
+    color="primary"
+    (click)="resetFilters()"
+  >
+    Reset filter
+    <mat-icon>delete</mat-icon>
+  </button>
+
+  <div class="instructions" *ngIf="showInstructions">
+    <p>Search a cocktail by its name or by one of its ingredients</p>
+  </div>
 </div>
 
 <mat-card class="cocktail-card" *ngFor="let drink of drinks">
@@ -57,3 +75,10 @@
     </mat-card-actions>
   </div>
 </mat-card>
+
+<footer [id]="footerType">
+  <div id="btmFooter">
+    <p>&copy; 2002 - 2022</p>
+    <p>Lorenzo Trabbia</p>
+  </div>
+</footer>
