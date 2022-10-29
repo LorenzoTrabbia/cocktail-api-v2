@@ -14,14 +14,24 @@
 <div class="search-container">
   <mat-form-field class="search-bar" appearance="outline" color="accent">
     <mat-label>Search by name</mat-label>
-    <input matInput [(ngModel)]="drink" />
+    <input
+      matInput
+      id="search-name"
+      [(ngModel)]="drink"
+      (change)="clickInput()"
+      [disabled]="controllerService.isDisabled === 'input'"
+    />
     <button mat-icon-button matSuffix (click)="searchCocktail()">
       <mat-icon matSuffix>search</mat-icon>
     </button>
   </mat-form-field>
   <mat-form-field appearance="outline" color="accent">
     <mat-label>Search by ingredient</mat-label>
-    <mat-select>
+    <mat-select
+      (valueChange)="clickSelect()"
+      [(ngModel)]="ingredient"
+      [disabled]="controllerService.isDisabled === 'select'"
+    >
       <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">
         {{ ingredient }}
       </mat-option>

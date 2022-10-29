@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/_service/api.service';
+import { ControllerService } from 'src/app/_service/controller.service';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,11 +9,15 @@ import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    public controllerService: ControllerService
+  ) {}
 
   faCocktail = faMartiniGlassCitrus;
   drinks: any[] = [];
   drink: string = '';
+  ingredient: string = '';
 
   ingredients: string[] = [
     'Light rum',
@@ -128,5 +133,27 @@ export class SearchComponent {
       .subscribe((data: any) => {
         this.drinks = data.drinks;
       });
+  }
+
+  clickInput() {
+    if (this.controllerService.isDisabled !== 'input') {
+      if (this.drink.length === 0) {
+        this.controllerService.setIsDisabled('');
+      } else {
+        this.controllerService.setIsDisabled('select');
+      }
+    }
+  }
+
+  clickSelect() {
+    console.log(this.ingredient);
+
+    if (this.controllerService.isDisabled !== 'select') {
+      if (this.ingredient.length === 0) {
+        this.controllerService.setIsDisabled('');
+      } else {
+        this.controllerService.setIsDisabled('input');
+      }
+    }
   }
 }

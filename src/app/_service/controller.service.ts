@@ -9,6 +9,7 @@ export class ControllerService {
   selectedLetter: string = 'A';
   selectedRandomDrink: any;
   ascendent: boolean = true;
+  isDisabled: string = '';
   language: string = 'EN';
 
   setSelectedLetter(letter: string) {
@@ -21,6 +22,10 @@ export class ControllerService {
 
   setAscendent(ascendent: boolean) {
     this.ascendent = ascendent;
+  }
+
+  setIsDisabled(isDisabled: string) {
+    this.isDisabled = isDisabled;
   }
 
   setLanguage(language: string) {
