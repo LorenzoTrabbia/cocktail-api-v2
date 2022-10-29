@@ -1,0 +1,88 @@
+/* Featured cocktail card */
+.featured-title {
+  padding: 20px 0 16px 40px;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin: 0 auto 27px;
+  height: fit-content;
+  background-color: #4a403a;
+  width: 300px;
+}
+
+.featured-card-header {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  text-align: center;
+  align-items: center;
+  order: 1;
+}
+
+.featured-card button {
+  display: block;
+  margin-top: 16px;
+  width: fit-content;
+}
+
+.featured-card-img img {
+  max-width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Cocktail card */
+.cocktail-card {
+  max-width: 250px;
+  margin: 50px auto;
+  padding-bottom: 0;
+  border-radius: 10px;
+}
+
+.cocktail-card:first-of-type {
+  margin-top: 26px;
+}
+
+.cocktail-card img {
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+}
+
+.cocktail-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cocktail-card-info h1 {
+  margin: 0;
+}
+
+mat-card-actions.mat-card-actions,
+mat-card-content.mat-card-content {
+  margin-bottom: 0;
+}
+
+/* Main application */
+.title {
+  padding: 20px 0 16px 40px;
+  margin: 0;
+}
+
+.sort-button {
+  margin: 0 0 20px 40px;
+}
+
+/* Filter by letter */
+.letter-list {
+  margin: 0 20px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media screen and (min-width: 600px) {
+}

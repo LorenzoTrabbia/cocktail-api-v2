@@ -1,0 +1,90 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button>
+      <fa-icon [icon]="faCocktail" size="xl"></fa-icon>
+    </button>
+    <span>Cocktail Application</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [routerLink]="'/search'">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<div class="featured-title">
+  <h1>Featured Cocktail</h1>
+</div>
+<div class="featured-card">
+  <div class="featured-card-header">
+    <h1>{{ controllerService.selectedRandomDrink?.strDrink }}</h1>
+    <h3>{{ controllerService.selectedRandomDrink?.strCategory }}</h3>
+    {{ check(controllerService.selectedRandomDrink?.strInstructions) }}
+    <button
+      mat-raised-button
+      color="accent"
+      [routerLink]="'/drink/' + controllerService.selectedRandomDrink?.idDrink"
+    >
+      SHOW MORE
+    </button>
+  </div>
+  <div class="featured-card-img">
+    <img
+      [src]="controllerService.selectedRandomDrink?.strDrinkThumb"
+      [alt]="controllerService.selectedRandomDrink?.strDrink"
+    />
+  </div>
+</div>
+
+<hr />
+
+<h1 class="title">Cocktail name filter</h1>
+<button
+  mat-raised-button
+  class="sort-button"
+  color="primary"
+  (click)="sortList()"
+>
+  Sort by name
+  <mat-icon *ngIf="this.controllerService.ascendent"
+    >keyboard_arrow_down</mat-icon
+  >
+  <mat-icon *ngIf="!this.controllerService.ascendent"
+    >keyboard_arrow_up</mat-icon
+  >
+</button>
+
+<mat-button-toggle-group class="letter-list">
+  <mat-button-toggle
+    *ngFor="let letter of alphabet"
+    (click)="filterFirstLetter(letter)"
+    [checked]="letter === this.controllerService.selectedLetter"
+  >
+    {{ letter }}
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<mat-card class="cocktail-card" *ngFor="let drink of drinks">
+  <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
+  <div class="cocktail-card-info">
+    <mat-card-content>
+      <h1>{{ drink.strDrink }}</h1>
+      <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-mini-fab
+        color="accent"
+        [routerLink]="'/drink/' + drink.idDrink"
+      >
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>
+
+<footer>
+  <div id="btmFooter">
+    <p>&copy; 2002 - 2022</p>
+    <p>Lorenzo Trabbia</p>
+  </div>
+</footer>
