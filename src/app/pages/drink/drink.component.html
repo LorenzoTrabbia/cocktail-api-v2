@@ -1,0 +1,72 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button>
+      <fa-icon [icon]="faCocktail" size="xl"></fa-icon>
+    </button>
+    <span>Cocktail Application</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [routerLink]="'/home'">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<img [src]="drink.thumb" [alt]="drink.name" id="drink-image" />
+
+<h1>{{ drink.name }}</h1>
+<h2 class="category">{{ drink.category }}</h2>
+
+<mat-divider class="divider"></mat-divider>
+
+<mat-list class="ingredients">
+  <h2>Ingredients</h2>
+  <mat-list-item *ngFor="let ingredient of drink.ingredients">
+    <div mat-line>{{ ingredient.name }}</div>
+    <div mat-line>{{ ingredient.measure ? ingredient.measure : "N/A" }}</div>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider class="divider"></mat-divider>
+
+<div class="languages">
+  <h2>Instructions</h2>
+  <img
+    src="../../assets/united-kingdom.png"
+    (click)="changeLanguage('EN')"
+    alt="english"
+  />
+  <img
+    src="../../assets/germany.png"
+    (click)="changeLanguage('DE')"
+    alt="german"
+  />
+  <img
+    src="../../assets/france.png"
+    (click)="changeLanguage('FR')"
+    alt="french"
+  />
+  <img
+    src="../../assets/italy.png"
+    (click)="changeLanguage('IT')"
+    alt="italian"
+  />
+  <img
+    src="../../assets/spain.png"
+    (click)="changeLanguage('ES')"
+    alt="spanish"
+  />
+</div>
+<p class="instructions">
+  {{
+    drink.instructions[this.controllerService.language]
+      ? drink.instructions[this.controllerService.language]
+      : "No instructions available"
+  }}
+</p>
+
+<footer>
+  <div id="btmFooter">
+    <p>&copy; 2002 - 2022</p>
+    <p>Lorenzo Trabbia</p>
+  </div>
+</footer>

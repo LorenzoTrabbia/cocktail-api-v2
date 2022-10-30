@@ -30,10 +30,8 @@ footer {
   padding: 20px 0;
 }
 
-footer #btmFooter p {
-  margin: 0;
-}
-
+footer #btmFooter p,
 footer #absFooter p {
   margin: 0;
+  text-align: center;
 }

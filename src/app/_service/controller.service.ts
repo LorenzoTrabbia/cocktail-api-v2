@@ -8,7 +8,7 @@ export class ControllerService {
 
   selectedLetter: string = 'A';
   selectedRandomDrink: any;
-  ascendent: boolean = true;
+  ascendent: boolean = false;
   isDisabled: string = '';
   drinkSearched: string = '';
   ingredientSelected: string = '';

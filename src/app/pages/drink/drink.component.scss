@@ -1,0 +1,56 @@
+#drink-image {
+  display: block;
+  margin: 30px auto;
+  width: 300px;
+}
+
+h1 {
+  margin: 0 37.5px;
+}
+
+.category {
+  margin: 0 37.5px;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.726);
+}
+
+.ingredients {
+  margin: 0 37.5px;
+  font-size: 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredients h2 {
+  margin: 15px 0;
+  width: 100%;
+}
+
+mat-list-item.mat-list-item {
+  width: 50%;
+}
+
+.languages {
+  margin: 0 37.5px;
+  display: flex;
+  align-items: center;
+}
+
+.languages img {
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+}
+
+.languages h2 {
+  margin: 15px 0;
+  font-size: 1.5em;
+}
+
+.instructions {
+  margin: 0 37.5px 20px;
+}
+
+.divider {
+  margin: 0 37.5px;
+}

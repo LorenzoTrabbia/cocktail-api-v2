@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       .searchCocktailByFirstLetter(this.controllerService.selectedLetter)
       .subscribe((data: any) => {
         this.drinks = data.drinks;
-        this.sortList();
+        this.sortList(false);
       });
   }
 
@@ -74,11 +74,15 @@ export class HomeComponent implements OnInit {
       .searchCocktailByFirstLetter(firstLetter)
       .subscribe((data: any) => {
         this.drinks = data.drinks;
+        this.drinks ? this.sortList(false) : null;
       });
   }
 
-  sortList() {
-    this.controllerService.setAscendent(!this.controllerService.ascendent);
+  sortList(change: boolean) {
+    if (change) {
+      console.log('non ho capito niente');
+      this.controllerService.setAscendent(!this.controllerService.ascendent);
+    }
     if (!this.controllerService.ascendent) {
       this.drinks.sort((a, b) => {
         if (a.strDrink.toLowerCase() < b.strDrink.toLowerCase()) {
