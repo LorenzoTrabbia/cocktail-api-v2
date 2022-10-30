@@ -35,3 +35,23 @@ footer #absFooter p {
   margin: 0;
   text-align: center;
 }
+
+/* Results found */
+.results {
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.7);
+  margin-left: 46.5px;
+}
+
+/* Result not found */
+.not-found img {
+  display: block;
+  width: 250px;
+  margin: 30px auto 0 auto;
+}
+
+.not-found figcaption {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.521);
+  margin-bottom: 50px;
+}

@@ -36,4 +36,10 @@ export class ApiService {
       `https://www.thecocktaildb.com/api/json/v1/1/random.php`
     );
   }
+
+  getIngredientList() {
+    return this.httpClient.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
+    );
+  }
 }

@@ -20,114 +20,22 @@ export class SearchComponent implements OnInit {
   ingredient: string = '';
   footerType: string = 'absFooter';
   showInstructions: boolean = true;
+  noResults: boolean = false;
 
-  ingredients: string[] = [
-    'Light rum',
-    'Applejack',
-    'Gin',
-    'Dark rum',
-    'Sweet Vermouth',
-    'Strawberry schnapps',
-    'Scotch',
-    'Apricot brandy',
-    'Triple sec',
-    'Southern Comfort',
-    'Orange bitters',
-    'Brandy',
-    'Lemon vodka',
-    'Blended whiskey',
-    'Dry Vermouth',
-    'Amaretto',
-    'Tea',
-    'Champagne',
-    'Coffee liqueur',
-    'Bourbon',
-    'Tequila',
-    'Vodka',
-    'Añejo rum',
-    'Bitters',
-    'Sugar',
-    'Kahlua',
-    'demerara Sugar',
-    'Dubonnet Rouge',
-    'Lime juice',
-    'Irish whiskey',
-    'Apple brandy',
-    'Carbonated water',
-    'Cherry brandy',
-    'Creme de Cacao',
-    'Grenadine',
-    'Port',
-    'Coffee brandy',
-    'Red wine',
-    'Rum',
-    'Grapefruit juice',
-    'Ricard',
-    'Sherry',
-    'Cognac',
-    'Sloe gin',
-    'Apple juice',
-    'Pineapple juice',
-    'Lemon juice',
-    'Sugar syrup',
-    'Milk',
-    'Strawberries',
-    'Chocolate syrup',
-    'Yoghurt',
-    'Mango',
-    'Ginger',
-    'Lime',
-    'Cantaloupe',
-    'Berries',
-    'Grapes',
-    'Kiwi',
-    'Tomato juice',
-    'Cocoa powder',
-    'Chocolate',
-    'Heavy cream',
-    'Galliano',
-    'Peach Vodka',
-    'Ouzo',
-    'Coffee',
-    'Spiced rum',
-    'Water',
-    'Espresso',
-    'Angelica root',
-    'Orange',
-    'Cranberries',
-    'Johnnie Walker',
-    'Apple cider',
-    'Everclear',
-    'Cranberry juice',
-    'Egg yolk',
-    'Egg',
-    'Grape juice',
-    'Peach nectar',
-    'Lemon',
-    'Firewater',
-    'Lemonade',
-    'Lager',
-    'Whiskey',
-    'Absolut Citron',
-    'Pisco',
-    'Irish cream',
-    'Ale',
-    'Chocolate liqueur',
-    'Midori melon liqueur',
-    'Sambuca',
-    'Cider',
-    'Sprite',
-    '7-Up',
-    'Blackberry brandy',
-    'Peppermint schnapps',
-    'Creme de Cassis',
-  ];
+  ingredients: string[] = [];
 
   ngOnInit() {
+    this.apiService.getIngredientList().subscribe((data: any) => {
+      data.drinks.map((ingredient: any) => {
+        this.ingredients.push(ingredient.strIngredient1);
+      });
+    });
+
     if (this.controllerService.drinkSearched) {
       this.drink = this.controllerService.drinkSearched;
       this.searchCocktail();
     }
+
     if (this.controllerService.ingredientSelected) {
       this.ingredient = this.controllerService.ingredientSelected;
       this.searchCocktailByIngredient(this.ingredient);
@@ -136,20 +44,27 @@ export class SearchComponent implements OnInit {
 
   searchCocktail() {
     this.showInstructions = false;
-    this.footerType = '';
-    console.log(this.footerType);
     this.apiService.searchCocktailByName(this.drink).subscribe((data: any) => {
       this.drinks = data.drinks;
+      if (this.drinks) {
+        this.footerType = '';
+      } else {
+        this.noResults = true;
+      }
     });
   }
 
   searchCocktailByIngredient(ingredient: string) {
     this.showInstructions = false;
-    this.footerType = '';
     this.apiService
       .searchCocktailByIngredient(ingredient)
       .subscribe((data: any) => {
         this.drinks = data.drinks;
+        if (this.drinks) {
+          this.footerType = '';
+        } else {
+          this.noResults = true;
+        }
       });
   }
 
@@ -175,6 +90,7 @@ export class SearchComponent implements OnInit {
 
   resetFilters() {
     this.showInstructions = true;
+    this.noResults = false;
     this.footerType = 'absFooter';
     this.drink = '';
     this.ingredient = '';
