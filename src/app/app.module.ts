@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DrinkComponent } from './pages/drink/drink.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
+import { IngredientComponent } from './pages/ingredient/ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,7 +24,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [AppComponent, DrinkComponent, HomeComponent, SearchComponent],
+  declarations: [
+    AppComponent,
+    DrinkComponent,
+    HomeComponent,
+    SearchComponent,
+    IngredientComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

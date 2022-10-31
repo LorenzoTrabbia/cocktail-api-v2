@@ -6,7 +6,7 @@
     <span>Cocktail Application</span>
     <span class="spacer"></span>
     <button mat-icon-button [routerLink]="'/home'">
-      <mat-icon>arrow_back</mat-icon>
+      <mat-icon>home</mat-icon>
     </button>
   </mat-toolbar>
 </p>
@@ -21,7 +21,9 @@
 <mat-list class="ingredients">
   <h2>Ingredients</h2>
   <mat-list-item *ngFor="let ingredient of drink.ingredients">
-    <div mat-line>{{ ingredient.name }}</div>
+    <div mat-line [routerLink]="'/ingredient/' + ingredient.name">
+      {{ ingredient.name }}
+    </div>
     <div mat-line>{{ ingredient.measure ? ingredient.measure : "N/A" }}</div>
   </mat-list-item>
 </mat-list>

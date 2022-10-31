@@ -1,0 +1,39 @@
+<p>
+  <mat-toolbar color="primary">
+    <button mat-icon-button>
+      <fa-icon [icon]="faCocktail" size="xl"></fa-icon>
+    </button>
+    <span>Cocktail Application</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [routerLink]="'/home'">
+      <mat-icon>home</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<div *ngIf="drinks.length !== 0">
+  <mat-card class="cocktail-card" *ngFor="let drink of drinks">
+    <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
+    <div class="cocktail-card-info">
+      <mat-card-content>
+        <h1>{{ drink.strDrink }}</h1>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-mini-fab
+          color="accent"
+          [routerLink]="'/drink/' + drink.idDrink"
+        >
+          <mat-icon>info</mat-icon>
+        </button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
+
+<footer [id]="footerType">
+  <div id="btmFooter">
+    <p>&copy; 2002 - 2022</p>
+    <p>Lorenzo Trabbia</p>
+  </div>
+</footer>
