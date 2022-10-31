@@ -11,85 +11,118 @@
   </mat-toolbar>
 </p>
 
-<div class="search-container">
-  <mat-form-field class="search-bar" appearance="outline" color="accent">
-    <mat-label>Search by name</mat-label>
-    <input
-      matInput
-      id="search-name"
-      [(ngModel)]="drink"
-      (change)="clickInput()"
-      [disabled]="controllerService.isDisabled === 'input'"
-      autocomplete="off"
-    />
-    <button mat-icon-button matSuffix (click)="searchCocktail()">
-      <mat-icon matSuffix>search</mat-icon>
-    </button>
-  </mat-form-field>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Search by ingredient</mat-label>
-    <mat-select
-      (selectionChange)="clickSelect()"
-      [(ngModel)]="ingredient"
-      [disabled]="controllerService.isDisabled === 'select'"
-    >
-      <mat-option
-        *ngFor="let ingredient of ingredients"
-        [value]="ingredient"
-        (click)="searchCocktailByIngredient(ingredient)"
-      >
-        {{ ingredient }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<mat-tab-group
+  mat-align-tabs="center"
+  (selectedIndexChange)="changeFooter($event)"
+>
+  <mat-tab label="Cocktail">
+    <div class="content">
+      <div class="search-container">
+        <mat-form-field class="search-bar" appearance="outline" color="accent">
+          <mat-label>Search by name</mat-label>
+          <input
+            matInput
+            id="search-name"
+            [(ngModel)]="drink"
+            (change)="clickInput()"
+            [disabled]="controllerService.isDisabled === 'input'"
+            autocomplete="off"
+          />
+          <button mat-icon-button matSuffix (click)="searchCocktail()">
+            <mat-icon matSuffix>search</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Search by ingredient</mat-label>
+          <mat-select
+            (selectionChange)="clickSelect()"
+            [(ngModel)]="ingredient"
+            [disabled]="controllerService.isDisabled === 'select'"
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+              (click)="searchCocktailByIngredient(ingredient)"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-  <button
-    mat-raised-button
-    class="sort-button"
-    color="primary"
-    (click)="resetFilters()"
-  >
-    Reset filter
-    <mat-icon>delete</mat-icon>
-  </button>
-
-  <div class="instructions" *ngIf="showInstructions">
-    <p>Search a cocktail by its name or by one of its ingredients</p>
-  </div>
-</div>
-
-<span *ngIf="!showInstructions && !noResults" class="results">
-  {{ drink ? drink : ingredient }}: {{ drinks.length }} results found
-</span>
-
-<div *ngIf="drinks">
-  <mat-card class="cocktail-card" *ngFor="let drink of drinks">
-    <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
-    <div class="cocktail-card-info">
-      <mat-card-content>
-        <h1>{{ drink.strDrink }}</h1>
-        <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
-      </mat-card-content>
-      <mat-card-actions>
         <button
-          mat-mini-fab
-          color="accent"
-          [routerLink]="'/drink/' + drink.idDrink"
+          mat-raised-button
+          class="sort-button"
+          color="primary"
+          (click)="resetFilters()"
         >
-          <mat-icon>info</mat-icon>
+          Reset filter
+          <mat-icon>delete</mat-icon>
         </button>
-      </mat-card-actions>
-    </div>
-  </mat-card>
-</div>
 
-<figure *ngIf="noResults" class="not-found">
-  <img src="../../../assets/no-result.png" alt="no results found" />
-  <figcaption>No results found ):</figcaption>
-</figure>
+        <div class="instructions" *ngIf="showInstructions">
+          <p>Search a cocktail by its name or by one of its ingredients</p>
+        </div>
+      </div>
+
+      <span *ngIf="!showInstructions && !noResults" class="results">
+        {{ drink ? drink : ingredient }}: {{ drinks.length }} results found
+      </span>
+
+      <div *ngIf="drinks">
+        <mat-card class="cocktail-card" *ngFor="let drink of drinks">
+          <img
+            mat-card-image
+            [src]="drink.strDrinkThumb"
+            [alt]="drink.strDrink"
+          />
+          <div class="cocktail-card-info">
+            <mat-card-content>
+              <h1>{{ drink.strDrink }}</h1>
+              <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-mini-fab
+                color="accent"
+                [routerLink]="'/drink/' + drink.idDrink"
+              >
+                <mat-icon>info</mat-icon>
+              </button>
+            </mat-card-actions>
+          </div>
+        </mat-card>
+      </div>
+
+      <figure *ngIf="noResults" class="not-found">
+        <img src="../../../assets/no-result.png" alt="no results found" />
+        <figcaption>No results found ):</figcaption>
+      </figure>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="Ingredients">
+    <div class="ingredients-container">
+      <figure
+        class="ingredient"
+        *ngFor="let ingredient of ingredients"
+        [routerLink]="'/ingredient/' + ingredient"
+      >
+        <img
+          [src]="
+            'https://www.thecocktaildb.com/images/ingredients/' +
+            ingredient +
+            '-Small.png'
+          "
+          [alt]="ingredient"
+        />
+        <figcaption>{{ ingredient }}</figcaption>
+      </figure>
+    </div>
+  </mat-tab>
+</mat-tab-group>
 
 <footer [id]="footerType">
-  <div id="btmFooter">
+  <div>
     <p>&copy; 2002 - 2022</p>
     <p>Lorenzo Trabbia</p>
   </div>

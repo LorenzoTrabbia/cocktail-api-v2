@@ -42,4 +42,10 @@ export class ApiService {
       `https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list`
     );
   }
+
+  getIngredientsImage(ingredient: string) {
+    return this.httpClient.get(
+      `https://www.thecocktaildb.com/images/ingredients/${ingredient}.png`
+    );
+  }
 }

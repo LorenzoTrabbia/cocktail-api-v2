@@ -10,14 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./ingredient.component.scss'],
 })
 export class IngredientComponent implements OnInit {
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(private apiService: ApiService, public route: ActivatedRoute) {}
 
   faCocktail = faMartiniGlassCitrus;
-  footerType: string = 'absFooter';
+  footerType: string = 'btmFooter';
   drinks: any[] = [];
 
   ngOnInit(): void {
-    const ingredient = this.route.snapshot.paramMap.get('ingredient')!;
+    const ingredient = this.route.snapshot.paramMap.get('ingredientName')!;
 
     this.apiService
       .searchCocktailByIngredient(ingredient)

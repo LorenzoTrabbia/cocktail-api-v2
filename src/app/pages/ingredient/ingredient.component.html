@@ -11,6 +11,11 @@
   </mat-toolbar>
 </p>
 
+<span class="results">
+  Cocktails with "{{ this.route.snapshot.paramMap.get("ingredientName") }}":
+  {{ drinks.length }} results
+</span>
+
 <div *ngIf="drinks.length !== 0">
   <mat-card class="cocktail-card" *ngFor="let drink of drinks">
     <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />

@@ -50,6 +50,7 @@ export class SearchComponent implements OnInit {
         this.footerType = '';
       } else {
         this.noResults = true;
+        this.footerType = 'btmFooter';
       }
     });
   }
@@ -98,5 +99,18 @@ export class SearchComponent implements OnInit {
     this.controllerService.setIsDisabled('');
     this.controllerService.setDrinkSearched('');
     this.controllerService.setIngredientSelected('');
+  }
+
+  changeFooter(index: number) {
+    if (index === 1) {
+      this.footerType = 'btmFooter';
+    }
+    if (index === 0) {
+      if (this.noResults) {
+        this.footerType = 'btmFooter';
+      } else if (this.drinks.length === 0) {
+        this.footerType = 'absFooter';
+      }
+    }
   }
 }
