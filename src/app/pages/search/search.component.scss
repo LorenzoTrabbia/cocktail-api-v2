@@ -86,3 +86,11 @@ footer#absFooter {
   bottom: 0;
   width: 100vw;
 }
+
+/* Responsive */
+@media only screen and (min-width: 768px) {
+  .ingredients-container {
+    width: 727px;
+    margin: 20px auto;
+  }
+}
