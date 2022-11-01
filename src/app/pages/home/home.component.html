@@ -67,7 +67,7 @@
   {{ this.controllerService.selectedLetter }}: {{ drinks.length }} results found
 </span>
 
-<div *ngIf="drinks">
+<div *ngIf="drinks" class="card-container">
   <mat-card class="cocktail-card" *ngFor="let drink of drinks">
     <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
     <div class="cocktail-card-info">

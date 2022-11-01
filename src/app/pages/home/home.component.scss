@@ -79,10 +79,88 @@ mat-card-content.mat-card-content {
 
 /* Filter by letter */
 .letter-list {
-  margin: 0 20px 20px 20px;
+  margin: 0 20px 20px 40px;
   flex-wrap: wrap;
 }
 
 /* Responsive */
 @media screen and (min-width: 600px) {
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .cocktail-card:first-of-type {
+    margin: 30px 10px;
+  }
+
+  .cocktail-card {
+    margin: 30px 10px;
+  }
+
+  .featured-card {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 580px;
+  }
+
+  .featured-card-header {
+    flex-direction: column;
+    width: 280px;
+  }
+
+  .featured-card-img {
+    width: 300px;
+  }
+
+  .featured-card-img img {
+    height: 100%;
+    width: auto;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .featured-card-header button {
+    margin-top: auto;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  span.results {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .featured-card {
+    width: 800px;
+  }
+
+  .featured-card-header {
+    width: 500px;
+  }
+
+  .featured-card-img {
+    width: 300px;
+  }
+
+  .featured-card-img img {
+    height: 100%;
+    width: auto;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .featured-card-header button {
+    margin-top: auto;
+  }
+
+  .sort-button {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .featured-title {
+    margin-left: 90px;
+  }
 }
