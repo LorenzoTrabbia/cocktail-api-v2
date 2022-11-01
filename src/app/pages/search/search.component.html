@@ -68,7 +68,7 @@
         {{ drink ? drink : ingredient }}: {{ drinks.length }} results found
       </span>
 
-      <div *ngIf="drinks">
+      <div *ngIf="drinks" class="drink-container">
         <mat-card class="cocktail-card" *ngFor="let drink of drinks">
           <img
             mat-card-image
