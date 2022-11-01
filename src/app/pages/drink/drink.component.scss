@@ -22,7 +22,7 @@ h1 {
 }
 
 .ingredient {
-  padding-left: 0;
+  padding: 0;
   font-size: 1em;
 }
 
@@ -58,4 +58,29 @@ mat-list-item.mat-list-item {
 
 .divider {
   margin: 0 37.5px;
+}
+
+/* Responsive */
+@media only screen and (min-width: 600px) {
+  .container {
+    margin: 0 5%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    margin: 0 10%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    margin: 0 20%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container {
+    margin: 0 30%;
+  }
 }

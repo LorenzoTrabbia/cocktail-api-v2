@@ -13,64 +13,66 @@
 
 <img [src]="drink.thumb" [alt]="drink.name" id="drink-image" />
 
-<h1>{{ drink.name }}</h1>
-<h2 class="category">{{ drink.category }}</h2>
+<div class="container">
+  <h1>{{ drink.name }}</h1>
+  <h2 class="category">{{ drink.category }}</h2>
 
-<mat-divider class="divider"></mat-divider>
+  <mat-divider class="divider"></mat-divider>
 
-<mat-list class="ingredients">
-  <h2>Ingredients</h2>
-  <mat-list-item *ngFor="let ingredient of drink.ingredients">
-    <div mat-line>
-      <button
-        mat-button
-        class="ingredient"
-        [routerLink]="'/ingredient/' + ingredient.name"
-      >
-        {{ ingredient.name }}
-      </button>
-    </div>
-    <div mat-line>{{ ingredient.measure ? ingredient.measure : "N/A" }}</div>
-  </mat-list-item>
-</mat-list>
+  <mat-list class="ingredients">
+    <h2>Ingredients</h2>
+    <mat-list-item *ngFor="let ingredient of drink.ingredients">
+      <div mat-line>
+        <button
+          mat-button
+          class="ingredient"
+          [routerLink]="'/ingredient/' + ingredient.name"
+        >
+          <span class="ingredient-name">{{ ingredient.name }}</span>
+        </button>
+      </div>
+      <div mat-line>{{ ingredient.measure ? ingredient.measure : "N/A" }}</div>
+    </mat-list-item>
+  </mat-list>
 
-<mat-divider class="divider"></mat-divider>
+  <mat-divider class="divider"></mat-divider>
 
-<div class="languages">
-  <h2>Instructions</h2>
-  <img
-    src="../../assets/united-kingdom.png"
-    (click)="changeLanguage('EN')"
-    alt="english"
-  />
-  <img
-    src="../../assets/germany.png"
-    (click)="changeLanguage('DE')"
-    alt="german"
-  />
-  <img
-    src="../../assets/france.png"
-    (click)="changeLanguage('FR')"
-    alt="french"
-  />
-  <img
-    src="../../assets/italy.png"
-    (click)="changeLanguage('IT')"
-    alt="italian"
-  />
-  <img
-    src="../../assets/spain.png"
-    (click)="changeLanguage('ES')"
-    alt="spanish"
-  />
+  <div class="languages">
+    <h2>Instructions</h2>
+    <img
+      src="../../assets/united-kingdom.png"
+      (click)="changeLanguage('EN')"
+      alt="english"
+    />
+    <img
+      src="../../assets/germany.png"
+      (click)="changeLanguage('DE')"
+      alt="german"
+    />
+    <img
+      src="../../assets/france.png"
+      (click)="changeLanguage('FR')"
+      alt="french"
+    />
+    <img
+      src="../../assets/italy.png"
+      (click)="changeLanguage('IT')"
+      alt="italian"
+    />
+    <img
+      src="../../assets/spain.png"
+      (click)="changeLanguage('ES')"
+      alt="spanish"
+    />
+  </div>
+  <p class="instructions">
+    {{
+      drink.instructions[this.controllerService.language]
+        ? drink.instructions[this.controllerService.language]
+        : "No instructions available"
+    }}
+  </p>
 </div>
-<p class="instructions">
-  {{
-    drink.instructions[this.controllerService.language]
-      ? drink.instructions[this.controllerService.language]
-      : "No instructions available"
-  }}
-</p>
 
 <footer>
   <div id="btmFooter">
