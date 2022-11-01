@@ -16,7 +16,7 @@
   {{ drinks.length }} results
 </span>
 
-<div *ngIf="drinks.length !== 0">
+<div *ngIf="drinks.length !== 0" class="drink-container">
   <mat-card class="cocktail-card" *ngFor="let drink of drinks">
     <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
     <div class="cocktail-card-info">
