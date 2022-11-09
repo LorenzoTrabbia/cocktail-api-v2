@@ -1,0 +1,75 @@
+input {
+  display: none;
+}
+
+.cocktail-card {
+  max-width: 250px;
+  margin: 20px auto;
+  padding-bottom: 0;
+  border-radius: 10px;
+}
+
+.cocktail-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cocktail-card-info h1 {
+  margin: 0;
+}
+
+mat-card-actions.mat-card-actions,
+mat-card-content.mat-card-content {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+label::before {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #69f0ae;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 28px;
+  transition-duration: 0.4s;
+  transform: scale(0);
+}
+
+label img {
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 0;
+  transition-duration: 0.2s;
+  transform-origin: 50% 50%;
+}
+
+:checked + label::before {
+  content: "✓";
+  color: black;
+  background-color: #69f0ae;
+  transform: scale(1);
+  z-index: 1;
+}
+
+:checked + label img {
+  border-radius: 10px;
+  transform: scale(0.9);
+  z-index: -1;
+}

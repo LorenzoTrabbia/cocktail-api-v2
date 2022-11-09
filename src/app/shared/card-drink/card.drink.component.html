@@ -1,0 +1,17 @@
+<mat-card class="cocktail-card">
+    <input type="checkbox" name="drink" [id]="drink.strDrink" (click)="onSelect($event)">
+    <label [for]="drink.strDrink">
+        <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
+    </label>
+    <div class="cocktail-card-info">
+        <mat-card-content>
+            <h1>{{ drink.strDrink }}</h1>
+            <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-mini-fab color="accent" [routerLink]="'/drink/' + drink.idDrink">
+                <mat-icon>info</mat-icon>
+            </button>
+        </mat-card-actions>
+    </div>
+</mat-card>

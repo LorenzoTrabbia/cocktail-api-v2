@@ -1,0 +1,54 @@
+<p>
+    <mat-toolbar color="primary">
+        <button mat-icon-button>
+            <fa-icon [icon]="faCocktail" size="xl"></fa-icon>
+        </button>
+        <span>Cocktail Application</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [routerLink]="'/home'">
+            <mat-icon>home</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" opened position="end" *ngIf="selectedDrinks.length > 0">
+        <div class="cart">
+            <h1>Cart</h1>
+            <div class="cart-items">
+                <div *ngFor="let drink of selectedDrinks">
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
+                        </div>
+                        <div class="cart-item-info">
+                            <h1>{{ drink.strDrink }}</h1>
+                            <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
+                        </div>
+                    </div>
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div class="content">
+            <div class="search-container">
+                <mat-form-field class="search-bar" appearance="outline" color="accent">
+                    <mat-label>Search by name</mat-label>
+                    <input matInput id="search-name" [(ngModel)]="drink" autocomplete="off" />
+                    <button mat-icon-button matSuffix (click)="searchCocktail()">
+                        <mat-icon matSuffix>search</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="drinks" class="drink-container">
+                <div *ngFor=" let drink of drinks">
+                    <app-card-drink [drink]="drink" (onSelectChange)="onCardSelectChange(drink, $event)">
+                    </app-card-drink>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

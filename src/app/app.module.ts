@@ -8,8 +8,10 @@ import { DrinkComponent } from './pages/drink/drink.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { MatRippleModule } from '@angular/material/core';
     HomeComponent,
     SearchComponent,
     IngredientComponent,
+    OrdersComponent,
+    CardDrinkComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +59,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatListModule,
     MatTabsModule,
     MatRippleModule,
+    MatSidenavModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
