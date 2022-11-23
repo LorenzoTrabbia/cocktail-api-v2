@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { Resolve } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
+import { IngredientDetailComponent } from './pages/ingredientDetail/ingredientDetail.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -38,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     IngredientComponent,
     OrdersComponent,
     CardDrinkComponent,
+    IngredientDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -48,4 +48,10 @@ export class ApiService {
       `https://www.thecocktaildb.com/images/ingredients/${ingredient}.png`
     );
   }
+
+  searchIngredientByName(name: string) {
+    return this.httpClient.get(
+      `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${name}`
+    );
+  }
 }

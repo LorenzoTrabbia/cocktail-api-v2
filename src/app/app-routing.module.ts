@@ -5,14 +5,21 @@ import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { IngredientComponent } from './pages/ingredient/ingredient.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { IngredientDetailComponent } from './pages/ingredientDetail/ingredientDetail.component';
+import { DrinkResolver } from './_service/drink.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'drink/:idDrink', component: DrinkComponent },
+  {
+    path: 'drink/:idDrink',
+    component: DrinkComponent,
+    resolve: { drink: DrinkResolver },
+  },
   { path: 'search', component: SearchComponent },
-  { path: 'ingredient/:ingredientName', component: IngredientComponent },
+  { path: 'ingredient/:ingredientName', component: IngredientDetailComponent },
+  { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({

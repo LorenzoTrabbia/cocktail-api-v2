@@ -23,11 +23,7 @@
     <h2>Ingredients</h2>
     <mat-list-item *ngFor="let ingredient of drink.ingredients">
       <div mat-line>
-        <button
-          mat-button
-          class="ingredient"
-          [routerLink]="'/ingredient/' + ingredient.name"
-        >
+        <button mat-button class="ingredient" [routerLink]="'/ingredient/' + ingredient.name">
           <span class="ingredient-name">{{ ingredient.name }}</span>
         </button>
       </div>
@@ -39,37 +35,17 @@
 
   <div class="languages">
     <h2>Instructions</h2>
-    <img
-      src="../../assets/united-kingdom.png"
-      (click)="changeLanguage('EN')"
-      alt="english"
-    />
-    <img
-      src="../../assets/germany.png"
-      (click)="changeLanguage('DE')"
-      alt="german"
-    />
-    <img
-      src="../../assets/france.png"
-      (click)="changeLanguage('FR')"
-      alt="french"
-    />
-    <img
-      src="../../assets/italy.png"
-      (click)="changeLanguage('IT')"
-      alt="italian"
-    />
-    <img
-      src="../../assets/spain.png"
-      (click)="changeLanguage('ES')"
-      alt="spanish"
-    />
+    <img src="../../assets/united-kingdom.png" (click)="changeLanguage('EN')" alt="english" />
+    <img src="../../assets/germany.png" (click)="changeLanguage('DE')" alt="german" />
+    <img src="../../assets/france.png" (click)="changeLanguage('FR')" alt="french" />
+    <img src="../../assets/italy.png" (click)="changeLanguage('IT')" alt="italian" />
+    <img src="../../assets/spain.png" (click)="changeLanguage('ES')" alt="spanish" />
   </div>
   <p class="instructions">
     {{
-      drink.instructions[this.controllerService.language]
-        ? drink.instructions[this.controllerService.language]
-        : "No instructions available"
+    drink.instructions[this.controllerService.language]
+    ? drink.instructions[this.controllerService.language]
+    : "No instructions available"
     }}
   </p>
 </div>

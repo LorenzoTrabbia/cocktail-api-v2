@@ -1,0 +1,21 @@
+<div>
+    <h1>{{ingredient.strIngredient}}</h1>
+    <p>{{ingredient.strDescription}}</p>
+</div>
+
+<div *ngIf="drinks" class="card-container">
+    <mat-card class="cocktail-card" *ngFor="let drink of drinks">
+        <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />
+        <div class="cocktail-card-info">
+            <mat-card-content>
+                <h1>{{ drink.strDrink }}</h1>
+                <mat-card-subtitle>{{ drink.strCategory }}</mat-card-subtitle>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-mini-fab color="accent" [routerLink]="'/drink/' + drink.idDrink">
+                    <mat-icon>info</mat-icon>
+                </button>
+            </mat-card-actions>
+        </div>
+    </mat-card>
+</div>
