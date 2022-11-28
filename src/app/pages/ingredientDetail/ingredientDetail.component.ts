@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './ingredientDetail.component.html',
+  styleUrls: ['./ingredientDetail.component.scss'],
 })
 export class IngredientDetailComponent implements OnInit {
   faCocktail = faMartiniGlassCitrus;

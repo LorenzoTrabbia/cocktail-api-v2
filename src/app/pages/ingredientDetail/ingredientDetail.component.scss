@@ -1,0 +1,14 @@
+/* Cocktail cards */
+.drink-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.cocktail-card {
+  max-width: 250px;
+  margin: 50px auto;
+  padding-bottom: 0;
+  border-radius: 10px;
+}
