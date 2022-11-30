@@ -1,8 +1,27 @@
+<p>
+    <mat-toolbar color="primary">
+        <button mat-icon-button>
+            <fa-icon [icon]="faCocktail" size="xl"></fa-icon>
+        </button>
+        <span>Cocktail Application</span>
+        <span class="spacer"></span>
+        <button mat-icon-button [routerLink]="'/home'">
+            <mat-icon>home</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
+
 <div>
-    <h1>{{ingredient.strIngredient}}</h1>
-    <p>{{ingredient.strDescription}}</p>
+    <h1>{{ingredient.strIngredient ? ingredient.strIngredient : "Name not found"}}</h1>
+    <img [src]="
+    'https://www.thecocktaildb.com/images/ingredients/' +
+    ingredient.strIngredient +
+    '-Medium.png'" alt="">
+    <h2>Description</h2>
+    <p class="description">{{ingredient.strDescription ? ingredient.strDescription : "Description not available"}}</p>
 </div>
 
+<h2 class="drinks">Drinks:</h2>
 <div *ngIf="drinks" class="card-container">
     <mat-card class="cocktail-card" *ngFor="let drink of drinks">
         <img mat-card-image [src]="drink.strDrinkThumb" [alt]="drink.strDrink" />

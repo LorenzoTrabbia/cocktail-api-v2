@@ -12,3 +12,35 @@
   padding-bottom: 0;
   border-radius: 10px;
 }
+
+.cocktail-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.cocktail-card-info h1 {
+  margin: 0;
+}
+
+mat-card-actions.mat-card-actions,
+mat-card-content.mat-card-content {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+.description,
+.drinks {
+  margin-left: 20px;
+}
+
+.description {
+  margin-right: 20px;
+}
+
+.drinks {
+  margin-top: 20px;
+  margin-bottom: 0;
+}

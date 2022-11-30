@@ -24,11 +24,7 @@
         <h1>{{ drink.strDrink }}</h1>
       </mat-card-content>
       <mat-card-actions>
-        <button
-          mat-mini-fab
-          color="accent"
-          [routerLink]="'/drink/' + drink.idDrink"
-        >
+        <button mat-mini-fab color="accent" [routerLink]="'/drink/' + drink.idDrink">
           <mat-icon>info</mat-icon>
         </button>
       </mat-card-actions>
@@ -36,9 +32,9 @@
   </mat-card>
 </div>
 
-<footer [id]="footerType">
+<!-- <footer [id]="footerType">
   <div id="btmFooter">
     <p>&copy; 2002 - 2022</p>
     <p>Lorenzo Trabbia</p>
   </div>
-</footer>
+</footer> -->

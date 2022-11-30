@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { Resolve } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +29,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDialogModule } from '@angular/material/dialog';
+
+import { BlockUIModule } from 'ng-block-ui';
+import { BlockUIHttpModule } from 'ng-block-ui/http';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRippleModule,
     MatSidenavModule,
     MatDialogModule,
+    BlockUIModule.forRoot(),
+    BlockUIHttpModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

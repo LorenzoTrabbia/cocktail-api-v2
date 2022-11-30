@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class IngredientDetailComponent implements OnInit {
   faCocktail = faMartiniGlassCitrus;
   ingredient: any;
+
   drinks: any[] = [];
 
   constructor(
